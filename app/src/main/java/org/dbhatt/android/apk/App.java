@@ -4,15 +4,14 @@ import android.content.pm.PackageInfo;
 
 /**
  * Created by dev on 18/1/17.
- * this is
  */
 
-public class App {
+class App {
     private String app_name;
     PackageInfo packageInfo;
 
 
-    public App(String name, PackageInfo packageInfo) {
+    App(String name, PackageInfo packageInfo) {
         this.packageInfo = packageInfo;
         setApp_name(name);
     }
