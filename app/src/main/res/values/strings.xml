@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Share Apk</string>
+
+
+    <!-- row variables -->
+    <string name="row_version">Version : - </string>
+
+    <!-- action name-->
+    <string name="action_system_apps">System Apps</string>
+    <string name="action_contact_us">Contact Us</string>
+
+    <!-- description -->
+    <string name="description_app_icon">Application Icon</string>
+
+</resources>
