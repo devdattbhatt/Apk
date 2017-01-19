@@ -23,6 +23,7 @@ import java.util.List;
  * - icon of application
  * - name of application
  * - version of application
+ * - package name
  */
 
 class Adapter extends RecyclerView.Adapter<Adapter.App> {
