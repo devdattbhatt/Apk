@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Share Apk</string>
-
+    <string name="app_name">Apk</string>
 
     <!-- row variables -->
     <string name="row_version">Version : - </string>
