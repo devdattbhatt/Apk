@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/app_row_icon"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:layout_toEndOf="@+id/app_row_icon"
             android:layout_toRightOf="@+id/app_row_icon"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -36,9 +38,11 @@
 
         <TextView
             android:id="@+id/app_row_app_version_value"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/app_row_name"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:layout_toEndOf="@+id/app_row_app_version"
             android:layout_toRightOf="@+id/app_row_app_version"
             android:text="@string/row_version" />
@@ -53,6 +57,7 @@
             android:text="@string/row_version" />
 
         <ImageView
+            android:id="@+id/app_row_share"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"

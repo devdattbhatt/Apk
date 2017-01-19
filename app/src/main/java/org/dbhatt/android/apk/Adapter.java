@@ -1,8 +1,10 @@
 package org.dbhatt.android.apk;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,10 +31,13 @@ import java.util.List;
 
 class Adapter extends RecyclerView.Adapter<Adapter.App> {
 
+    private Context context;
     private List<org.dbhatt.android.apk.App> list;
     private PackageManager pm;
 
     Adapter(Context context) {
+
+        this.context = context;
         list = new ArrayList<>();
         pm = context.getPackageManager();
         for (ApplicationInfo applicationInfo : pm.getInstalledApplications(PackageManager.GET_META_DATA)) {
@@ -56,6 +62,8 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
     }
 
     Adapter(Context context, int j) {
+
+        this.context = context;
         list = new ArrayList<>();
         pm = context.getPackageManager();
         for (ApplicationInfo applicationInfo : pm.getInstalledApplications(PackageManager.GET_META_DATA)) {
@@ -99,15 +107,32 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
 
     class App extends RecyclerView.ViewHolder {
 
-        ImageView app_icon;
+        ImageView app_icon, share;
         TextView app_name, version, package_name;
 
         App(View itemView) {
             super(itemView);
+
             app_icon = (ImageView) itemView.findViewById(R.id.app_row_icon);
+
             app_name = (TextView) itemView.findViewById(R.id.app_row_name);
             version = (TextView) itemView.findViewById(R.id.app_row_app_version_value);
             package_name = (TextView) itemView.findViewById(R.id.app_row_package_name);
+
+            itemView.findViewById(R.id.app_row_share).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        File apk = new File(list.get(getAdapterPosition()).packageInfo.applicationInfo.publicSourceDir);
+                        Intent shre = new Intent().setAction(Intent.ACTION_SEND);
+                        shre.setType("application/vnd.android.package-archive");
+                        shre.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(apk));
+                        context.startActivity(Intent.createChooser(shre, "thullu"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 }
