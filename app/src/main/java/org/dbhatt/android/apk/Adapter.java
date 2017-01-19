@@ -128,7 +128,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
                         File apk = new File(list.get(getAdapterPosition()).packageInfo.applicationInfo.publicSourceDir);
                         Intent shre = new Intent().setAction(Intent.ACTION_SEND);
                         shre.setType("application/vnd.android.package-archive");
-                        shre.putExtra(Intent.EXTRA_SUBJECT, list.get(getAdapterPosition()).getApp_name());
+                        shre.putExtra(Intent.EXTRA_SUBJECT, list.get(getAdapterPosition()).getApp_name() + ".apk");
                         shre.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(apk));
                         context.startActivity(Intent.createChooser(shre, "thullu"));
                     } catch (Exception e) {
