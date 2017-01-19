@@ -88,6 +88,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
         org.dbhatt.android.apk.App info = list.get(position);
         holder.app_name.setText(info.getApp_name());
         holder.version.setText(info.packageInfo.versionName);
+        holder.package_name.setText(info.packageInfo.packageName);
     }
 
     @Override
@@ -98,13 +99,14 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
     class App extends RecyclerView.ViewHolder {
 
         ImageView app_icon;
-        TextView app_name, version;
+        TextView app_name, version, package_name;
 
         App(View itemView) {
             super(itemView);
             app_icon = (ImageView) itemView.findViewById(R.id.app_row_icon);
             app_name = (TextView) itemView.findViewById(R.id.app_row_name);
             version = (TextView) itemView.findViewById(R.id.app_row_app_version_value);
+            package_name = (TextView) itemView.findViewById(R.id.app_row_package_name);
         }
     }
 }
