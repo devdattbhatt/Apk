@@ -1,5 +1,6 @@
 package org.dbhatt.android.apk;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
                     item.setChecked(true);
                     recyclerView.setAdapter(new Adapter(this, 0));
                 }
-                break;
+                return true;
+            case R.id.action_contact_us:
+                startActivity(new Intent(this, Contact_us.class));
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
