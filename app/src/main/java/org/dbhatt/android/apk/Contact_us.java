@@ -3,6 +3,7 @@ package org.dbhatt.android.apk;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -10,7 +11,7 @@ import android.widget.TextView;
  * via this activity user can reach developer
  */
 
-public class Contact_us extends AppCompatActivity {
+public class Contact_us extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
@@ -26,6 +27,19 @@ public class Contact_us extends AppCompatActivity {
         google_plus = (TextView) findViewById(R.id.contact_to_google_plus);
         linkedin = (TextView) findViewById(R.id.contact_to_linkedin);
         facebook = (TextView) findViewById(R.id.contact_to_facebook);
+
+
+        whats_app.setOnClickListener(this);
+        developer.setOnClickListener(this);
+        language.setOnClickListener(this);
+        google_plus.setOnClickListener(this);
+        linkedin.setOnClickListener(this);
+        facebook.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }
