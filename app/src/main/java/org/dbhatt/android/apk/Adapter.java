@@ -89,6 +89,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
         holder.app_name.setText(info.getApp_name());
         holder.version.setText(info.packageInfo.versionName);
         holder.package_name.setText(info.packageInfo.packageName);
+        holder.app_icon.setImageDrawable(info.packageInfo.applicationInfo.loadIcon(pm));
     }
 
     @Override
