@@ -1,7 +1,10 @@
 package org.dbhatt.android.apk;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -39,7 +42,62 @@ public class Contact_us extends AppCompatActivity implements View.OnClickListene
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.contact_to_whats_app:
+                try {
+                    startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:9427159497")).setPackage("com.whatsapp"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Snackbar snackbar = Snackbar.make(view, R.string.seekbar_install_whats_app, Snackbar.LENGTH_SHORT);
+                    snackbar.setAction(R.string.seekbar_install_now, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //https://play.google.com/store/apps/details?id=com.whatsapp
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")));
+                        }
+                    });
+                    snackbar.show();
+                }
+                break;
+            case R.id.contact_to_google_plus_developer:
+                try {
+                    startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://groups.google.com/forum/#!forum/dbhatt_org_android/join")), null));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.contact_to_language:
+                try {
+                    startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://groups.google.com/forum/#!forum/dbhatt_org_language/join")), null));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.contact_to_google_plus:
+                try {
+                    startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://plus.google.com/114708882354058631022")), null));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.contact_to_linkedin:
+                try {
+                    startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.linkedin.com/in/devdatt-bhatt-533136109")), null));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.contact_to_facebook:
+                try {
+                    if (getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode >= 3002850)
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?href=https://www.facebook.com/dbhatt.org")));
+                    else
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/dbhatt.org")));
+                } catch (Exception e) {
+                    startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/dbhatt.org")), null));
+                }
+                break;
+        }
     }
 }
