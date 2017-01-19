@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,7 +108,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
 
     class App extends RecyclerView.ViewHolder {
 
-        ImageView app_icon, share;
+        ImageView app_icon;
         TextView app_name, version, package_name;
 
         App(View itemView) {
@@ -123,9 +124,11 @@ class Adapter extends RecyclerView.Adapter<Adapter.App> {
                 @Override
                 public void onClick(View v) {
                     try {
+                        Log.e("file name", list.get(getAdapterPosition()).getApp_name());
                         File apk = new File(list.get(getAdapterPosition()).packageInfo.applicationInfo.publicSourceDir);
                         Intent shre = new Intent().setAction(Intent.ACTION_SEND);
                         shre.setType("application/vnd.android.package-archive");
+                        shre.putExtra(Intent.EXTRA_SUBJECT, list.get(getAdapterPosition()).getApp_name());
                         shre.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(apk));
                         context.startActivity(Intent.createChooser(shre, "thullu"));
                     } catch (Exception e) {

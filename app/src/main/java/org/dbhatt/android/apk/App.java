@@ -4,6 +4,7 @@ import android.content.pm.PackageInfo;
 
 /**
  * Created by dev on 18/1/17.
+ *
  */
 
 class App {
@@ -13,7 +14,7 @@ class App {
 
     App(String name, PackageInfo packageInfo) {
         this.packageInfo = packageInfo;
-        setApp_name(name);
+        this.app_name=name;
     }
 
 
@@ -21,15 +22,4 @@ class App {
         return app_name;
     }
 
-    public void setApp_name(String app_name) {
-        this.app_name = app_name;
-    }
-
-    public PackageInfo getPackageInfo() {
-        return packageInfo;
-    }
-
-    public void setPackageInfo(PackageInfo packageInfo) {
-        this.packageInfo = packageInfo;
-    }
 }
